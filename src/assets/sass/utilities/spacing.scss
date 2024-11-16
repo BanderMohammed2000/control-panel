@@ -1,0 +1,22 @@
+@use "../config/layout.scss";
+// هذه الهيكلية تسمى ماب والتي تشبه المصفوفة
+$spacing-data: (
+  none: 0,
+  extra-small: layout.$space-unit * 0.625,
+  base: layout.$space-unit,
+  small: layout.$space-unit * 1.25,
+  normal: layout.$space-unit * 2,
+  wide: layout.$space-unit * 3,
+  extra-wide: layout.$space-unit * 5,
+);
+
+// base: هي القيمة الافتراضية في حال استدعينا الدالة ولم نمرر لها قيمة
+@function spacing($variant: base) {
+  $fetched-value: map-get($spacing-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Spacing variant not found';
+  }
+}

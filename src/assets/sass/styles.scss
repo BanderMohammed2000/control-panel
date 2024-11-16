@@ -1,0 +1,15 @@
+@use "./config/variables.scss";
+@use "./config/layout.scss";
+@use "./config/colors.scss";
+
+@use "./utilities/spacing.scss";
+@use "./base/fonts.scss";
+@use "./base/global.scss";
+@use "./base/typography.scss";
+@use "./base/links.scss";
+
+$background-color: silver;
+
+body {
+  background-color: $background-color;
+}
