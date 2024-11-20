@@ -1,3 +1,4 @@
+const { log } = require("console");
 const fs = require("fs");
 const exec = require(`child_process`).exec;
 const component = process.argv[2];
@@ -20,6 +21,17 @@ fs.readFile("./src/components/template.html", "utf8", (err, source) => {
               `there is a problem in creating ${component}.scss`
             );
           console.log(`${component} created successfully!`);
+          fs.appendFile(
+            `./src/assets/sass/components/_components.scss`,
+            `@use "${component}";\n`,
+            (err) => {
+              if (err)
+                return console.error(
+                  `there is a problem in appending ${component}.scss`
+                );
+              console.log(`${component} appended successfully`);
+            }
+          );
           exec(`code -r ./src/components/${component}.html`, (err) => {
             if (err) return console.error(err);
           });

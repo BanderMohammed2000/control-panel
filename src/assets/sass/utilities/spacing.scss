@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:meta";
 @use "../config/layout.scss";
 // هذه الهيكلية تسمى ماب والتي تشبه المصفوفة
 $spacing-data: (
@@ -12,9 +14,9 @@ $spacing-data: (
 
 // base: هي القيمة الافتراضية في حال استدعينا الدالة ولم نمرر لها قيمة
 @function spacing($variant: base) {
-  $fetched-value: map-get($spacing-data, $variant);
+  $fetched-value: map.get($spacing-data, $variant);
 
-  @if type-of($fetched-value) == number {
+  @if meta.type-of($fetched-value) == number {
     @return $fetched-value;
   } @else {
     @error 'Spacing variant not found';

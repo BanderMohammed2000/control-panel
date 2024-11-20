@@ -3,10 +3,15 @@
 @use "./config/colors.scss";
 
 @use "./utilities/spacing.scss";
+@use "./utilities/mixin-card.scss";
+
 @use "./base/fonts.scss";
 @use "./base/global.scss";
 @use "./base/typography.scss";
 @use "./base/links.scss";
+
+@use "components/demo.scss";
+@use "components/components.scss";
 
 $background-color: silver;
 

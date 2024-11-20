@@ -6,13 +6,17 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+    //code splitting
+    "assets/js/banner": "./src/assets/js/banner.js",
+  },
 
   output: {
     publicPath: "/",
     path: path.join(__dirname, "/app"),
 
-    filename: "app.js",
+    filename: "[name].js",
   },
 
   devServer: {
@@ -33,6 +37,16 @@ module.exports = {
 
         loader: "html-loader",
       },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
 
       {
         test: /\.(sass|css|scss)$/,
@@ -45,6 +59,8 @@ module.exports = {
         ],
       },
 
+      // webpack 5 لايستخدم file-loader
+      // البديل تحت الكود المعلق
       // {
       //   test: /\.(svg|eot|woff|woff2|ttf)$/,
       //   // من اجل لايتم تحزيم ملف صورة داخل مجلد الخطوط (وهذا قد يحدث في حال تشابهوا في الامتداد)
@@ -87,8 +103,33 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html",
-
       template: "./src/index.html",
+      // بمعنى فقط راح يتم استدعاء ملف app.js داخل هذه الصفحة
+      chunks: ["app"],
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: "components/button.html",
+      template: "./src/components/button.html",
+      chunks: ["app"],
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: "components/textfield.html",
+      template: "./src/components/textfield.html",
+      chunks: ["app"],
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: "components/card.html",
+      template: "./src/components/card.html",
+      chunks: ["app"],
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: "components/banner.html",
+      template: "./src/components/banner.html",
+      chunks: ["app", "assets/js/banner"],
     }),
 
     // new MiniCssExtractPlugin({

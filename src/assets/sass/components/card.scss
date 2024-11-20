@@ -1,0 +1,36 @@
+@use "../utilities/spacing.scss";
+@use "../config/colors.scss";
+@use "../utilities/mixin-card.scss" as *;
+.c-card {
+  @include e-card;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: spacing.spacing("normal");
+  width: 100%;
+}
+
+.c-card__title {
+  flex-grow: 1;
+  color: colors.$color-text-subdued;
+  font-weight: normal;
+  margin-left: spacing.spacing();
+}
+
+.c-card__desc {
+  width: 100%;
+  font-size: 14px;
+}
+
+.c-card--no-desc {
+  align-items: center;
+  .c-card__title {
+    margin-bottom: 0;
+  }
+}
+
+.c-card--no-action {
+  .c-card__desc {
+    margin-top: 0;
+  }
+}

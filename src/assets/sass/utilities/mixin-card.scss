@@ -1,0 +1,12 @@
+@use "../config/colors.scss";
+@use "../utilities/spacing.scss";
+@use "sass:color";
+
+@mixin e-card {
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0
+      rgba(color.adjust(colors.$color-primary, $lightness: -30%), 0.15),
+    0 0 0 1px rgba(color.adjust(colors.$color-primary, $lightness: -30%), 0.05);
+  margin-bottom: spacing.spacing("normal");
+}
