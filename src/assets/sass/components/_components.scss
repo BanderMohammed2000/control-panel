@@ -10,3 +10,12 @@
 //     url("../fonts/icon.ttf") format("truetype"),
 //     url("../fonts/icon.svg") format("svg");
 // }
+@use "list";
+@use "tabs";
+@use "upload";
+@use "help";
+@use "summary";
+@use "actions";
+@use "sidebar";
+@use "table";
+@use "chart";
