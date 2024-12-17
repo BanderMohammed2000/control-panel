@@ -2,6 +2,7 @@
 @use "../config/layout.scss" as *;
 @use "../config/colors.scss" as *;
 @use "../base/fonts.scss" as *;
+@use "sass:math";
 
 $sidebar-control-width: 35px;
 $sidebar-icon-size: 20px;
@@ -103,39 +104,39 @@ $dense-width: $sidebar-control-width + ($sidebar-dense-padding * 2) + $shift;
   justify-content: flex-end;
 }
 
-// @media(max-width: $bp-sidebar) {
-//   .c-sidebar {
-//     overflow: hidden;
-//     width: $dense-width;
-//     padding-left: 0;
-//     transform: translateX($shift);
-//     transition: transform 200ms 200ms, width 0s 200ms, padding-left 0s 200ms;
-//   }
+@media (max-width: $bp-sidebar) {
+  .c-sidebar {
+    overflow: hidden;
+    width: $dense-width;
+    padding-left: 0;
+    transform: translateX($shift);
+    transition: transform 200ms 200ms, width 0s 200ms, padding-left 0s 200ms;
+  }
 
-//   .c-sidebar__backdrop {
-//     transform: scaleX(#{$dense-width / $layout-sidebar});
-//     transform-origin:  100% 0;
-//     transition: transform 200ms;
-//   }
+  .c-sidebar__backdrop {
+    transform: scaleX(math.div($dense-width, $layout-sidebar));
+    transform-origin: 100% 0;
+    transition: transform 200ms;
+  }
 
-//   .c-sidebar__menu {
-//     opacity: 0;
-//     transition: opacity 200ms 0s;
-//   }
+  .c-sidebar__menu {
+    opacity: 0;
+    transition: opacity 200ms 0s;
+  }
 
-//   .c-sidebar:hover {
-//     width: $layout-sidebar;
-//     overflow: visible;
-//     padding-left: $sidebar-normal-padding;
-//     transform: scaleX(1);
-//     transition-delay: 0;
-//     transition: transform 200ms;
-//     .c-sidebar__backdrop {
-//       transform: scaleX(1);
-//     }
-//     .c-sidebar__menu {
-//       opacity: 1;
-//       transition-delay: 200ms;
-//     }
-//   }
-// }
+  .c-sidebar:hover {
+    width: $layout-sidebar;
+    overflow: visible;
+    padding-left: $sidebar-normal-padding;
+    transform: scaleX(1);
+    transition-delay: 0;
+    transition: transform 200ms;
+    .c-sidebar__backdrop {
+      transform: scaleX(1);
+    }
+    .c-sidebar__menu {
+      opacity: 1;
+      transition-delay: 200ms;
+    }
+  }
+}

@@ -1,6 +1,7 @@
-@use "../utilities/spacing.scss";
+@use "../utilities/spacing.scss" as *;
 @use "../config/colors.scss";
 @use "../utilities/mixin-card.scss" as *;
+@use "../config/layout.scss" as *;
 
 $color-banner: #47c1bf;
 $color-banner-light: #b7ecec;
@@ -12,7 +13,7 @@ $icon-size: 32px;
   @include e-card;
   background-color: $color-banner-lighter;
   border-top: 3px solid $color-banner-dark;
-  padding: spacing.spacing("small") spacing.spacing("extra-wide");
+  padding: spacing("small") spacing("extra-wide");
   position: relative;
 }
 
@@ -33,16 +34,16 @@ $icon-size: 32px;
 .c-banner__close,
 .c-banner__icon {
   position: absolute;
-  top: spacing.spacing("small");
+  top: spacing("small");
 }
 
 .c-banner__close {
-  left: spacing.spacing("normal");
+  left: spacing("normal");
   cursor: pointer;
 }
 
 .c-banner__icon {
-  right: spacing.spacing("normal");
+  right: spacing("normal");
   color: $color-banner-dark;
   background: $color-banner-light;
   border-radius: 50%;
@@ -71,22 +72,22 @@ $icon-size: 32px;
 
 //responsive
 
-// @media (max-width: $bp-phone-normal) {
-//   .c-banner {
-//     padding-left: spacing.spacing("small");
-//     padding-right: spacing.spacing("small");
-//   }
+@media (max-width: $bp-phone-normal) {
+  .c-banner {
+    padding-left: spacing("small");
+    padding-right: spacing("small");
+  }
 
-//   .c-banner__icon {
-//     right: spacing.spacing("small");
-//   }
+  .c-banner__icon {
+    right: spacing("small");
+  }
 
-//   .c-banner__close {
-//     left: spacing.spacing("small");
-//   }
+  .c-banner__close {
+    left: spacing("small");
+  }
 
-//   .c-banner__title {
-//     margin-left: spacing.spacing("normal");
-//     margin-right: $icon-size + spacing.spacing("extra-small");
-//   }
-// }
+  .c-banner__title {
+    margin-left: spacing("normal");
+    margin-right: $icon-size + spacing("extra-small");
+  }
+}

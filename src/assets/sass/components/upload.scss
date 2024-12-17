@@ -116,9 +116,10 @@ $upload-size: 400px;
 }
 
 //responsive
-// @media (max-width: $upload-size) {
-//     .c-upload {
-//         min-width: initial;
-//         width: 100%;
-//     }
-// }
+
+@media (max-width: $upload-size) {
+  .c-upload {
+    min-width: initial;
+    width: 100%;
+  }
+}

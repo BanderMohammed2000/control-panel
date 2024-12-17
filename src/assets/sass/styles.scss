@@ -13,6 +13,11 @@
 @use "components/demo.scss";
 @use "components/components.scss";
 
+@use "pages/index.scss";
+@use "pages/single-page.scss";
+
+@use "hacks/add-product.scss";
+
 $background-color: silver;
 
 body {

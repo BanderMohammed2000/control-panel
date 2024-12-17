@@ -1,12 +1,14 @@
-@use "../utilities/spacing.scss";
+@use "../utilities/spacing.scss" as *;
 @use "../config/colors.scss";
 @use "../utilities/mixin-card.scss" as *;
+@use "sass:math";
+
 .c-card {
   @include e-card;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: spacing.spacing("normal");
+  padding: math.div(spacing("normal"), 2) spacing("normal");
   width: 100%;
 }
 
@@ -14,7 +16,14 @@
   flex-grow: 1;
   color: colors.$color-text-subdued;
   font-weight: normal;
-  margin-left: spacing.spacing();
+  margin-left: spacing();
+  margin-top: math.div(spacing("normal"), 2);
+  margin-bottom: math.div(spacing("normal"), 2);
+}
+
+.c-card__action {
+  margin-top: math.div(spacing("normal"), 2);
+  margin-bottom: math.div(spacing("normal"), 2);
 }
 
 .c-card__desc {
